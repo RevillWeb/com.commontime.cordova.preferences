@@ -1,27 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-        id="com.commontime.cordova.preferences"
-        version="0.0.0">
+  id="com.commontime.cordova.preferences"
+  version="0.0.0">
+  
+  <name>Preferences Plugin</name>
+  
+  <engines>
+    <engine name="cordova" version=">=4.1.1"/>
+  </engines>
+  
+  <js-module src="www/preferences.js" name="Preferences">
+    <clobbers target="plugins.preferences" />
+  </js-module>
+  
+  <platform name="android">
+    
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="Preferences">
+        <param name="android-package" value="com.commontime.cordova.plugins.preferences.Preferences"/>
+      </feature>
+    </config-file>
+    
+    <source-file src="src/android/com/commontime/cordova/plugins/preferences/Preferences.java" target-dir="src/com/commontime/cordova/plugins/preferences/"/>
+    
+  </platform>
+  
+  <platform name="ios">
+    
+    <config-file target="config.xml" parent="/*">
+      <feature name="Preferences">
+        <param name="ios-package" value="CTPreferences"/>
+      </feature>
+    </config-file>
+    
+    <source-file src="src/ios/CTPreferences.m"/>
+    <header-file src="src/ios/CTPreferences.h"/>
+    
+  </platform>
 
-	<name>Preferences Plugin</name>
-	
-	<engines>
-		<engine name="cordova" version=">=4.1.1"/>
-	</engines>
-
-	<js-module src="www/preferences.js" name="Preferences">
-		<clobbers target="plugins.preferences" />
-	</js-module>
-
-	<platform name="android">		
-				
-		<config-file target="res/xml/config.xml" parent="/*">
-			<feature name="Preferences">
-				<param name="android-package" value="com.commontime.cordova.plugins.preferences.Preferences"/>
-			</feature>
-		</config-file>		
-		
-		<source-file src="src/android/com/commontime/cordova/plugins/preferences/Preferences.java" target-dir="src/com/commontime/cordova/plugins/preferences/"/>
-		
-	</platform>
 </plugin>
