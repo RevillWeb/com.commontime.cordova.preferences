@@ -1,14 +1,14 @@
 //
-//  Preferences.m
+//  CTPreferences.m
 //  mDesign 10
 //
 //  Created by Gary Meehan on 17/03/2016.
 //  Copyright (c) 2016 CommonTime Limited. All rights reserved.
 //
 
-#import "Preferences.h"
+#import "CTPreferences.h"
 
-@implementation Preferences
+@implementation CTPreferences
 
 - (void) getAllPreferences: (CDVInvokedUrlCommand*) command
 {
@@ -19,9 +19,9 @@
     preferences = ((CDVViewController*) self.viewController).settings;
   }
   
-  CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary: preferences];
+  CDVPluginResult* result = [CDVPluginResult resultWithStatus: CDVCommandStatus_OK messageAsDictionary: preferences];
   
-  [self.commandDelegate sendPluginResult:result callbackId: command.callbackId];
+  [self.commandDelegate sendPluginResult: result callbackId: command.callbackId];
 }
 
 @end

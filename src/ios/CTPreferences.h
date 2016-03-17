@@ -1,5 +1,5 @@
 //
-//  Preferences.m
+//  CTPreferences.m
 //  mDesign 10
 //
 //  Created by Gary Meehan on 17/03/2016.
@@ -8,7 +8,7 @@
 
 #import <Cordova/CDV.h>
 
-@interface Preferences : CDVPlugin
+@interface CTPreferences : CDVPlugin
 
 - (void) getAllPreferences: (CDVInvokedUrlCommand*) command;
 
