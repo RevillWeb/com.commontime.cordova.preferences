@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-        id="com.commontime.mdesign.preferences"
+        id="com.commontime.cordova.preferences"
         version="0.0.0">
 
 	<name>mDesign 10 Preferences</name>
