@@ -3,7 +3,7 @@
         id="com.commontime.cordova.preferences"
         version="0.0.0">
 
-	<name>mDesign 10 Preferences</name>
+	<name>Preferences Plugin</name>
 	
 	<engines>
 		<engine name="cordova" version=">=4.1.1"/>
@@ -17,11 +17,11 @@
 				
 		<config-file target="res/xml/config.xml" parent="/*">
 			<feature name="Preferences">
-				<param name="android-package" value="com.commontime.mdesign.plugins.preferences.Preferences"/>
+				<param name="android-package" value="com.commontime.cordova.plugins.preferences.Preferences"/>
 			</feature>
 		</config-file>		
 		
-		<source-file src="src/android/com/commontime/mdesign/plugins/preferences/Preferences.java" target-dir="src/com/commontime/mdesign/plugins/preferences/"/>
+		<source-file src="src/android/com/commontime/cordova/plugins/preferences/Preferences.java" target-dir="src/com/commontime/cordova/plugins/preferences/"/>
 		
 	</platform>
 </plugin>

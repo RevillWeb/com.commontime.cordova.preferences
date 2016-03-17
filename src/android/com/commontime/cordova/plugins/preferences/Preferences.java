@@ -1,4 +1,4 @@
-package com.commontime.mdesign.plugins.preferences;
+package com.commontime.cordova.plugins.preferences;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
