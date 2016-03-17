@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="com.commontime.mdesign.preferences"
+        version="0.0.0">
+
+	<name>mDesign 10 Preferences</name>
+	
+	<engines>
+		<engine name="cordova" version=">=4.1.1"/>
+	</engines>
+
+	<js-module src="www/preferences.js" name="Preferences">
+		<clobbers target="plugins.preferences" />
+	</js-module>
+
+	<platform name="android">		
+				
+		<config-file target="res/xml/config.xml" parent="/*">
+			<feature name="Preferences">
+				<param name="android-package" value="com.commontime.mdesign.plugins.preferences.Preferences"/>
+			</feature>
+		</config-file>		
+		
+		<source-file src="src/android/com/commontime/mdesign/plugins/preferences/Preferences.java" target-dir="src/com/commontime/mdesign/plugins/preferences/"/>
+		
+	</platform>
+</plugin>
