@@ -2,7 +2,7 @@
 
 ### Calls
 
-**_plugins.provisioning.getAllPreferences( success, fail );_**
+**_plugins.preferences.getAllPreferences( success, fail );_**
 ```
 plugins.preferences.getAllPreferences(function(result) { 
 	console.log(JSON.stringify(result));
