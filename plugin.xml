@@ -42,11 +42,11 @@
 
 	<config-file target="config.xml" parent="/*">
       <feature name="Preferences">
-        <param name="wp-package" value="ProvisioningPlugin"/>
+        <param name="wp-package" value="PreferencesPlugin"/>
       </feature>
     </config-file>
     
-    <source-file src="src/wp8/ProvisioningPlugin.cs"/>
+    <source-file src="src/wp8/PreferencesPlugin.cs"/>
   
   </platform>
 
