@@ -48,6 +48,8 @@
     
     <source-file src="src/wp8/PreferencesPlugin.cs"/>
   
+	<framework src="src/wp8/Newtonsoft.Json.dll" custom="true" />
+	
   </platform>
 
 </plugin>
