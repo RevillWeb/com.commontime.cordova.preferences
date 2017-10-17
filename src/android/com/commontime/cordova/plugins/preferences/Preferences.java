@@ -77,7 +77,14 @@ public class Preferences extends CordovaPlugin {
 
 	private void setUpWebDebugging() {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-			WebView.setWebContentsDebuggingEnabled(true);
+			cordova.getActivity().runOnUiThread(new Runnable() {
+				@Override
+				public void run() {
+					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+						WebView.setWebContentsDebuggingEnabled(true);
+					}
+				}
+			});
 		}
 	}
 
