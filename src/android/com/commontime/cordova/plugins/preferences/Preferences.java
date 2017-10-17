@@ -1,6 +1,10 @@
 package com.commontime.cordova.plugins.preferences;
 
+import android.annotation.TargetApi;
 import android.content.res.XmlResourceParser;
+import android.os.Build;
+import android.util.Log;
+import android.webkit.WebView;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -10,8 +14,6 @@ import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Preferences extends CordovaPlugin {
 
@@ -54,6 +56,12 @@ public class Preferences extends CordovaPlugin {
 								} catch (JSONException e) {
 									e.printStackTrace();
 								}
+
+								if( prefName.equals("RELEASE_DEBUGGING") && prefValue.equals("true") ) {
+									Log.i(TAG, "Release debugging enabled");
+									setUpWebDebugging();
+								}
+
 								break;
 							}
                         }
@@ -64,6 +72,12 @@ public class Preferences extends CordovaPlugin {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+
+	private void setUpWebDebugging() {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+			WebView.setWebContentsDebuggingEnabled(true);
 		}
 	}
 
