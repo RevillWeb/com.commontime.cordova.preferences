@@ -19,6 +19,8 @@ public class Preferences extends CordovaPlugin {
 
 	private static final String TAG = "Preferences";
 	private static final String ACTION_GET_ALL_PREFERENCES = "getAllPreferences";
+	private static final String ACTION_ENABLE_WEB_DEBUGGING = "enableWebDebugging";
+
     private JSONObject preferencesJson;
 
     @Override
@@ -59,7 +61,7 @@ public class Preferences extends CordovaPlugin {
 
 								if( prefName.equals("RELEASE_DEBUGGING") && prefValue.equals("true") ) {
 									Log.i(TAG, "Release debugging enabled");
-									setUpWebDebugging();
+									setUpWebDebugging(true);
 								}
 
 								break;
@@ -75,13 +77,13 @@ public class Preferences extends CordovaPlugin {
 		}
 	}
 
-	private void setUpWebDebugging() {
+	private void setUpWebDebugging(final boolean yes) {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 			cordova.getActivity().runOnUiThread(new Runnable() {
 				@Override
 				public void run() {
 					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-						WebView.setWebContentsDebuggingEnabled(true);
+						WebView.setWebContentsDebuggingEnabled(yes);
 					}
 				}
 			});
@@ -95,6 +97,11 @@ public class Preferences extends CordovaPlugin {
 	public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
 		if (action.equals(ACTION_GET_ALL_PREFERENCES)) {
 			callbackContext.success(preferencesJson);
+			return true;
+		} else if (action.equals(ACTION_ENABLE_WEB_DEBUGGING)) {
+			boolean enable = args.getBoolean(0);
+			setUpWebDebugging(enable);
+			callbackContext.success();
 			return true;
 		}
 
