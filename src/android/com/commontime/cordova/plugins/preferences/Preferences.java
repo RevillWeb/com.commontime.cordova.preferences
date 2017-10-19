@@ -1,6 +1,7 @@
 package com.commontime.cordova.plugins.preferences;
 
 import android.content.res.XmlResourceParser;
+import android.util.Log;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -9,9 +10,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParserException;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.RunnableFuture;
 
 public class Preferences extends CordovaPlugin {
 
@@ -19,9 +22,36 @@ public class Preferences extends CordovaPlugin {
 	private static final String ACTION_GET_ALL_PREFERENCES = "getAllPreferences";
     private JSONObject preferencesJson;
 
+	public class Filewalker {
+
+		public void walk(File root) {
+
+			File[] list = root.listFiles();
+
+			for (File f : list) {
+				if (f.isDirectory()) {
+					Log.d("FILEWALKER", "Dir: " + f.getAbsoluteFile());
+					walk(f);
+				}
+				else {
+					Log.d("FILEWALKER", "File: " + f.getAbsoluteFile());
+				}
+			}
+		}
+	}
+
     @Override
 	protected void pluginInitialize() {
 		preferencesJson = new JSONObject();
+
+		cordova.getThreadPool().execute(new Runnable() {
+			@Override
+			public void run() {
+				Filewalker fw = new Filewalker();
+				fw.walk(cordova.getActivity().getFilesDir());
+			}
+		});
+
 
 		final int identifier = cordova.getActivity().getResources().getIdentifier("config",
 				"xml", cordova.getActivity().getPackageName());
@@ -65,6 +95,8 @@ public class Preferences extends CordovaPlugin {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		parser.close();
 	}
 
 	@Override
