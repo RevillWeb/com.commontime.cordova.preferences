@@ -1,0 +1,27 @@
+{
+    "name": "com.commontime.cordova.preferences",
+    "description": "Preferences Plugin",
+    "version": "0.0.5",
+    "homepage": "http://github.com/commontime/com.commontime.cordova.preferences#readme",
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/commontime/com.commontime.cordova.preferences.git"
+    },
+    "bugs": {
+      "url": "https://github.com/phonegap/com.commontime.cordova.preferences/issues"
+    },
+    "cordova": {
+      "id": "com.commontime.cordova.preferences",
+      "platforms": [
+        "ios",
+        "android"
+      ]
+    },
+    "keywords": [
+      "ecosystem:cordova",
+      "ecosystem:phonegap",
+      "cordova-ios",
+      "cordova-android"
+    ]
+  }
+  
